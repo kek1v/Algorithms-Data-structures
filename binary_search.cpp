@@ -20,7 +20,7 @@ int find(int A[],const int N,int x){//O(log2n) асимптотика
     int left = left_bound(A,N,x);
     int potential_first_index_of_x_in_A = left + 1;
     if(potential_first_index_of_x_in_A < N 
-        || potential_first_index_of_x_in_A){
+        || A[potential_first_index_of_x_in_A]==x){
         return potential_first_index_of_x_in_A;
     }
     return -1;//x not found
