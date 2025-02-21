@@ -15,7 +15,5 @@ int main(){
         result += hello;
     } 
 
-    std::cout << result << std::endl;
-
     return 0;
 }
