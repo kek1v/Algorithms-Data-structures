@@ -72,9 +72,48 @@ public:
             } 
         }
 };
+ 
+
+class Graph_type3{
+public:
+        uint64_t vertexes_count = 0;
+        uint64_t edges_number = 0;
+        // списки смежности для каждой вершины
+        std::vector<std::set<vertex_t>> lists_of_adjacency; 
+
+        void input(){
+            std::cin >> vertexes_count;
+            std::cin >> edges_number;
+
+            // полная очистка массива всписков смежности
+            lists_of_adjacency.clear();
+            //создаю пустые списки смежности для каждой вершны
+            lists_of_adjacency.resize(vertexes_count);
+
+            for(int i = 0; i < edges_number; i++){
+                vertex_t a, b;
+                std::cin >> a >> b;
+                lists_of_adjacency[a].insert(b); // у вершины а сосед б
+                lists_of_adjacency[b].insert(a);
+            }
+        }
+
+        void print(){
+            std::cout << "vetrex count = "<< vertexes_count<<std::endl;
+
+            for(int vertex = 0; vertex < vertexes_count; vertex++){
+                std::cout<< vertex <<": [";
+                for(auto neighbour: lists_of_adjacency[vertex]){
+                    std::cout<< neighbour << ", ";
+                }  
+                std::cout<<"\b\b]\n";
+            } 
+            std::cout<<std::endl;
+        }
+};
 
 int main(){
-    Graph_type2 g;
+    Graph_type3 g;
     g.input();
     g.print();
 
